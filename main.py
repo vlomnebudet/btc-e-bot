@@ -22,8 +22,9 @@ if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     window = MainWindow()
 
+    # Устанавливаем таймер для опроса биржи каждые три секунды
     timer = QTimer()
     timer.timeout.connect(window.local_button_handler)
-    timer.start(1000)
+    timer.start(3000)
 
     sys.exit(app.exec_())
