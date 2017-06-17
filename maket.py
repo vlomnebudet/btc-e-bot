@@ -15,6 +15,11 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle("Лошадь со скальпелем")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
+        self.label = QtWidgets.QLabel(self.centralwidget)
+        self.label.setGeometry(QtCore.QRect(600, 10, 47, 21))
+        self.label.setStyleSheet("background-color: rgb(170, 0, 0);")
+        self.label.setText("")
+        self.label.setObjectName("label")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 666, 21))
@@ -29,3 +34,4 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         pass
+
