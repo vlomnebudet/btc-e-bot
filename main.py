@@ -1,6 +1,7 @@
+import sys
 from maket import *
 from PyQt5.QtCore import QTimer
-from hostchecker import *
+from workthread import WorkThread
 
 
 class MainWindow:
@@ -13,27 +14,21 @@ class MainWindow:
         self.ui.setupUi(self.main_window)
         self.main_window.show()
 
-    # Метод - точка запуска очередной итерации по таймеру
-    def repeater(self):
-        available = self.hostchecker()
-        if available:
-            self.ui.label.setStyleSheet("background-color: rgb(0, 170, 0);")
-        else:
-            self.ui.label.setStyleSheet("background-color: rgb(170, 0, 0);")
+        # Инициируем класс работы с потоками и передаём текущий класс для обратной связи
+        self.workthread = WorkThread()
+        self.workthread.setMainWindow(self)
 
-    # Метод обёртка для метода проверки доступности биржи
-    def hostchecker(self):
-        return HostChecker.ping('btc-e.nz')
+    def run(self):
+        self.workthread.start()
 
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     window = MainWindow()
 
     # Устанавливаем таймер для опроса биржи каждые три секунды
     timer = QTimer()
-    timer.timeout.connect(window.repeater)
+    timer.timeout.connect(window.run)
     timer.start(3000)
 
     sys.exit(app.exec_())

@@ -8,3 +8,4 @@ ui/maket.ui
 __pycache__/maket.cpython-36.pyc
 __pycache__/hostchecker.cpython-36.pyc
 ui/maket.py
+__pycache__/workthread.cpython-36.pyc
