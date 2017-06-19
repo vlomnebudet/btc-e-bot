@@ -24,14 +24,22 @@ class Ui_MainWindow(object):
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 666, 21))
         self.menubar.setObjectName("menubar")
+        self.menu = QtWidgets.QMenu(self.menubar)
+        self.menu.setObjectName("menu")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
+        self.settings = QtWidgets.QAction(MainWindow)
+        self.settings.setObjectName("settings")
+        self.menu.addAction(self.settings)
+        self.menubar.addAction(self.menu.menuAction())
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
-        pass
+        _translate = QtCore.QCoreApplication.translate
+        self.menu.setTitle(_translate("MainWindow", "Файл"))
+        self.settings.setText(_translate("MainWindow", "Настройки"))
 

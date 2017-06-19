@@ -1,5 +1,6 @@
 import sys
 from maket import *
+from settings import SettingsDialog
 from PyQt5.QtCore import QTimer
 from workthread import WorkThread
 
@@ -18,8 +19,14 @@ class MainWindow:
         self.workthread = WorkThread()
         self.workthread.setMainWindow(self)
 
+        # Навешиваем на кнопку из верхнего меню открытие дополнительного окна
+        self.ui.settings.triggered.connect(self.open_settings)
+
     def run(self):
         self.workthread.start()
+
+    def open_settings(self):
+        self.settings_window = SettingsDialog()
 
 
 if __name__ == "__main__":
