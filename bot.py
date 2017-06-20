@@ -35,5 +35,17 @@ class Bot:
         except Exception:
             return False
 
+    def create(self):
+        insert_string = 'INSERT INTO hunkies (name, bot_type, depo, percent_to_profit)'
+        insert_string += ' VALUES (:name, :bot_type, :depo, :percent_to_profit)'
+        values = {'name': self.name, 'bot_type': self.bot_type, 'depo': self.depo}
+        values.update({'percent_to_profit': self.percent_to_profit})
+        try:
+            self.conn.execute(insert_string, values)
+            self.conn.commit()
+            return True
+        except Exception:
+            return False
+
     def __del__(self):
         self.conn.close()
