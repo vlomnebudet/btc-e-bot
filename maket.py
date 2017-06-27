@@ -20,6 +20,10 @@ class Ui_MainWindow(object):
         self.label.setStyleSheet("background-color: rgb(170, 0, 0);")
         self.label.setText("")
         self.label.setObjectName("label")
+        self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
+        self.textEdit.setGeometry(QtCore.QRect(263, 40, 391, 541))
+        self.textEdit.setReadOnly(True)
+        self.textEdit.setObjectName("textEdit")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 666, 21))
@@ -32,6 +36,10 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.settings = QtWidgets.QAction(MainWindow)
         self.settings.setObjectName("settings")
+        self.actiontrse = QtWidgets.QAction(MainWindow)
+        self.actiontrse.setObjectName("actiontrse")
+        self.actiontrse_2 = QtWidgets.QAction(MainWindow)
+        self.actiontrse_2.setObjectName("actiontrse_2")
         self.menu.addAction(self.settings)
         self.menubar.addAction(self.menu.menuAction())
 
@@ -42,4 +50,6 @@ class Ui_MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         self.menu.setTitle(_translate("MainWindow", "Файл"))
         self.settings.setText(_translate("MainWindow", "Настройки"))
+        self.actiontrse.setText(_translate("MainWindow", "trse"))
+        self.actiontrse_2.setText(_translate("MainWindow", "trse"))
 

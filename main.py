@@ -2,7 +2,9 @@ import sys
 from maket import *
 from settings import SettingsDialog
 from PyQt5.QtCore import QTimer
+from PyQt5 import QtGui
 from workthread import WorkThread
+from log import Log
 
 
 class MainWindow:
@@ -21,6 +23,10 @@ class MainWindow:
 
         # Навешиваем на кнопку из верхнего меню открытие дополнительного окна
         self.ui.settings.triggered.connect(self.open_settings)
+
+        # Отмечаем в логах, что запустили программу
+        self.ui.textEdit.setText(Log.read())
+        self.ui.textEdit.moveCursor(QtGui.QTextCursor.End)
 
     def run(self):
         self.workthread.start()
