@@ -148,3 +148,7 @@ class SettingsDialog:
         if 'percent_to_profit' not in notupdate:
             # Новое значени процента до профита у бота
             self.bot.percent_to_profit = self.settingsui.lineEdit_4.text()
+
+    # Закрываем форму настроек
+    def closeSettings(self):
+        self.settings_window.close()

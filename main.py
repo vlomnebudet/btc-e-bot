@@ -7,15 +7,14 @@ from workthread import WorkThread
 from log import Log
 
 
-class MainWindow:
+class MainWindow(QtWidgets.QMainWindow):
 
     # Инициируем класс и запускаем основное окно программы
     def __init__(self):
         super().__init__()
-        self.main_window = QtWidgets.QMainWindow()
         self.ui = Ui_MainWindow()
-        self.ui.setupUi(self.main_window)
-        self.main_window.show()
+        self.ui.setupUi(self)
+        self.show()
 
         # Инициируем класс работы с потоками и передаём текущий класс для обратной связи
         self.workthread = WorkThread()
@@ -33,6 +32,12 @@ class MainWindow:
 
     def open_settings(self):
         self.settings_window = SettingsDialog()
+
+    def closeEvent(self, *args, **kwargs):
+        try:
+            self.settings_window.closeSettings()
+        except:
+            pass
 
 
 if __name__ == "__main__":
