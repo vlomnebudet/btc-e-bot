@@ -25,7 +25,7 @@ class MainWindow:
         self.ui.settings.triggered.connect(self.open_settings)
 
         # Отмечаем в логах, что запустили программу
-        self.ui.textEdit.setText(Log.refresh('22222222'))
+        self.ui.textEdit.setText(Log.refresh("Запущена программа"))
         self.ui.textEdit.moveCursor(QtGui.QTextCursor.End)
 
     def run(self):
